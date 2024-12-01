@@ -24,11 +24,15 @@
     {
       formatter = pkgs.nixfmt-rfc-style;
 
+      packages.${system}.download-inputs = import ./download-inputs.nix { inherit pkgs; };
+
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
           git
           aoc-cli
           graalvm-ce
+          nushell
+          self.packages.${system}.download-inputs
         ];
         buildInputs = with pkgs; [
           rocFull
@@ -38,6 +42,9 @@
         shellHook = ''
           export ROC_LANGUAGE_SERVER_PATH=${rocFull}/bin/roc_language_server
           echo "ROC_LANGUAGE_SERVER_PATH: $ROC_LANGUAGE_SERVER_PATH"
+
+          echo "Downloading available inputs ..."
+          ${pkgs.lib.getExe self.packages.${system}.download-inputs}
         '';
       };
     };

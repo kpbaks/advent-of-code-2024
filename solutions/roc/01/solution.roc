@@ -2,7 +2,7 @@ app [main] { pf: platform "https://github.com/roc-lang/basic-cli/releases/downlo
 
 import pf.Stdout
 
-import "inputs/day01.txt" as input : Str
+import "../../../inputs/day01.txt" as input : Str
 
 ParsedInput : { left : List Int, right : List Int }
 
@@ -11,6 +11,12 @@ zip = \fst, snd -> List.map2 fst snd Pair
 
 parse : Str -> ParsedInput
 parse = \input ->
+    input
+    |> Str.trimEnd
+    |> Str.splitOn "\n"
+    |> List.map \s -> Str.splitOn "   "
+
+    left = List.withCapacity (List.len input)
 
     expect List.len left == List.len right
 
