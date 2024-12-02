@@ -11,4 +11,4 @@ this year, and I want to see how the language fairs for more algorithmic tasks.
 
 ## Installation
 
-All tools used are exposed in a development shell in `flake.nix` under `devShells.x86_64-linux.default`. Use `nix develop` to enter the shell, or better yet `direnv allow` if you have [direnv](https://direnv.net/) installed (you should).
+All tools used are exposed in a development shell in `flake.nix` under `devShells.x86_64-linux.default`. Use `nix develop` to enter the shell, or better yet `echo "use flake" > .envrc; direnv allow` if you have [direnv](https://direnv.net/) installed (you should).

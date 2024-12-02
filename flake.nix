@@ -45,6 +45,11 @@
 
           echo "Downloading available inputs ..."
           ${pkgs.lib.getExe self.packages.${system}.download-inputs}
+
+          # if ! [[ -f .vscode/settings.json ]]; then
+          #   echo "Creating .vscode/settings.json ..."
+          #   echo '{"roc-lang.language-server.exe": "'${rocFull}/bin/roc_language_server'"}' > .vscode/settings.json
+          # fi
         '';
       };
     };

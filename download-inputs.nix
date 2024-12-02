@@ -14,7 +14,7 @@ pkgs.writers.writeNuBin scriptName { }
         		} else if $env.ADVENT_OF_CODE_SESSION? != null {
         			$env.ADVENT_OF_CODE_SESSION
         		} else {
-        			error make {message: "No session cookie given. Either pass it as `${scriptName} <cookie>` or set environment variable ADVENT_OF_CODE_SESSION"}
+        			error make {msg: "No session cookie given. Either pass it as `${scriptName} <cookie>` or set environment variable ADVENT_OF_CODE_SESSION"}
         		}
         	
                 let inputs_dir = "inputs"
